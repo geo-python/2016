@@ -35,7 +35,19 @@ extensions = [
     'sphinx.ext.doctest',
     'sphinx.ext.mathjax',
     'sphinx.ext.githubpages',
+
+    # IPython console
+    'IPython.sphinxext.ipython_console_highlighting',
+    'IPython.sphinxext.ipython_directive',
+
+    # Enable Google Analytics ( requires: https://pypi.python.org/pypi/sphinxcontrib-googleanalytics )
+    'sphinxcontrib.googleanalytics',
 ]
+
+# Google Analytics ID to enable tracking of site traffic
+googleanalytics_id = "UA-88382509-1"
+googleanalytics_enabled = False
+
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -63,7 +75,7 @@ author = 'H. Tenkanen & D. Whipp'
 # built documents.
 #
 # The short X.Y version.
-version = '2016'
+version = '2016 Autumn'
 # The full version, including alpha/beta/rc tags.
 release = '1'
 
@@ -125,13 +137,29 @@ todo_include_todos = False
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 #
-html_theme = 'alabaster'
+
+import sphinx_rtd_theme
+
+#html_theme = 'alabaster'
+
+html_theme = "sphinx_rtd_theme"
+html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
 
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
 # documentation.
 #
 # html_theme_options = {}
+
+html_context = {
+    # Enable the "Edit in GitHub link within the header of each page.
+    'display_github': False,
+    # Set the following variables to generate the resulting github URL for each page.
+    # Format Template: https://{{ github_host|default("github.com") }}/{{ github_user }}/{{ github_repo }}/blob/{{ github_version }}{{ conf_py_path }}{{ pagename }}{{ suffix }}
+    'github_user': 'Geo-Python',
+    'github_repo': '2016',
+    'github_version': 'master/source/'
+}
 
 # Add any paths that contain custom themes here, relative to this directory.
 # html_theme_path = []
@@ -148,7 +176,7 @@ html_theme = 'alabaster'
 # The name of an image file (relative to this directory) to place at the top
 # of the sidebar.
 #
-# html_logo = None
+html_logo = 'img/logo_hy_geo_135.png'
 
 # The name of an image file (relative to this directory) to use as a favicon of
 # the docs.  This file should be a Windows icon file (.ico) being 16x16 or 32x32
@@ -171,7 +199,7 @@ html_static_path = ['_static']
 # bottom, using the given strftime format.
 # The empty string is equivalent to '%b %d, %Y'.
 #
-# html_last_updated_fmt = None
+html_last_updated_fmt = ""
 
 # If true, SmartyPants will be used to convert quotes and dashes to
 # typographically correct entities.
@@ -239,7 +267,7 @@ html_static_path = ['_static']
 # html_search_scorer = 'scorer.js'
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'Geo-Pythondoc'
+htmlhelp_basename = 'Geo-Python'
 
 # -- Options for LaTeX output ---------------------------------------------
 
